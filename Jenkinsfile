@@ -4,7 +4,7 @@ pipeline {
     parameters {
         choice(
             name: 'ACTION',
-            choices: ['apply', 'destroy'],
+            choices: ['Plan','apply', 'destroy'],
             description: 'Select the action to perform'
         )
     }
@@ -32,6 +32,10 @@ pipeline {
             steps {
                 script {
                     switch (params.ACTION) {
+                        case 'Plan':
+                            echo 'Executing Plan...'
+                            sh "terraform plan --auto-approve"
+                            break
                         case 'apply':
                             echo 'Executing Apply...'
                             sh "terraform apply --auto-approve"
