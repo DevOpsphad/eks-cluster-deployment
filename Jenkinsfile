@@ -34,7 +34,7 @@ pipeline {
                     switch (params.ACTION) {
                         case 'Plan':
                             echo 'Executing Plan...'
-                            sh "terraform plan --auto-approve"
+                            sh "terraform plan"
                             break
                         case 'apply':
                             echo 'Executing Apply...'
